@@ -18,11 +18,13 @@ const db = knex({
 		database: 'smart-brain'
 	}
 });
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT;
 const app = express();
 
 app.use(bodyParser.json());
 app.use(cors());
+
+app.get('/', (req, res) => { res.send('it is working') });
 
 app.post('/signin', (req, res) => { signin.handleSignin(req, res, db, bcrypt) });
 
